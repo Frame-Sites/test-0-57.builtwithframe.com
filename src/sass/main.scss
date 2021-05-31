@@ -1,0 +1,54 @@
+$themes: (
+  theme--light: (
+    'background-color'           :#fff,
+    'font-color'                 :rgba(0, 0, 0, 0.748),
+    'primary-color'              :#0052FF,
+    'primary-color-light'        :#00B2FF,
+    'content-border'             :2px solid rgba(27, 36, 53, 0.2),
+    'divider-line'               :rgba(27, 36, 53, 0.2),
+    'button-box-shadow'          :0px 4px 20px rgba(0, 0, 0, 0.1),
+    'detail-background-color'    :#fff,
+    'coursework-item-background' :#f1f1f1,
+    'nav-list-item-background'   :#fff,
+    'github-logo-invert'         :0.6,
+    'logo-url'                   :"/images/frame-logo-light.svg",
+    'footer-logo-url'            :"/images/frame-footer-light.svg"
+  ),
+  theme--dark: (
+    'background-color'           :#1b1f25,
+    'font-color'                 :#e5e5e5,
+    'primary-color'              :#798398,
+    'primary-color-light'        :#4F596C,
+    'content-border'             :2px solid #1b1f25,
+    'divider-line'               :#798398,
+    'button-box-shadow'          :0px 4px 20px rgba(0, 0, 0, 0.1),
+    'detail-background-color'    :#242930,
+    'coursework-item-background' :#63666b,
+    'nav-list-item-background'   :#373a3f,
+    'github-logo-invert'         :1,
+    'logo-url'                   :"/images/frame-logo.svg",
+    'footer-logo-url'            :"/images/frame-footer.svg"
+  )
+);
+
+@mixin theme() {
+  @each $theme, $map in $themes {
+    $theme-map: $map !global;
+    .#{$theme} & {
+      @content;
+    }
+  }
+  $theme-map: null !global;
+}
+
+@function theme-get($key) {
+  @return map-get($theme-map, $key);
+}
+
+@import "imports/navbar";
+@import "imports/right-side-componenet";
+@import "imports/left-side-component";
+@import "imports/general";
+@import "imports/animations";
+@import "imports/articles";
+
